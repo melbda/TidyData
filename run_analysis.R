@@ -2,18 +2,18 @@ run_analysis <- {
         
         ##Read tables of interest
         ##Provide column name of "subject" and "activity" for the subject and y_ files
-        subjecttestdata <- read.table("C:/Users/corhol/Documents/data/UCI HAR Dataset/test/subject_test.txt", col.names = "subject")
-        subjecttraindata <- read.table("C:/Users/corhol/Documents/data/UCI HAR Dataset/train/subject_train.txt", col.names = "subject")
-        activitytestdata <- read.table("C:/Users/corhol/Documents/data/UCI HAR Dataset/test/y_test.txt", col.names = "activity")
-        activitytraindata <- read.table("C:/Users/corhol/Documents/data/UCI HAR Dataset/train/y_train.txt", col.names = "activity")
-        measurestestdata <- read.table("C:/Users/corhol/Documents/data/UCI HAR Dataset/test/x_test.txt")
-        measurestraindata <- read.table("C:/Users/corhol/Documents/data/UCI HAR Dataset/train/x_train.txt")
+        subjecttestdata <- read.table("./UCI HAR Dataset/test/subject_test.txt", col.names = "subject")
+        subjecttraindata <- read.table("./UCI HAR Dataset/train/subject_train.txt", col.names = "subject")
+        activitytestdata <- read.table("./UCI HAR Dataset/test/y_test.txt", col.names = "activity")
+        activitytraindata <- read.table("./UCI HAR Dataset/train/y_train.txt", col.names = "activity")
+        measurestestdata <- read.table("./UCI HAR Dataset/test/x_test.txt")
+        measurestraindata <- read.table("./UCI HAR Dataset/train/x_train.txt")
         
         ##Read activity labels file with column names "activity" and "activitydesc"
-        activitylabels <- read.table("C:/Users/corhol/Documents/data/UCI HAR Dataset/activity_labels.txt", col.names = c("activity","activitydesc"))
+        activitylabels <- read.table("./UCI HAR Dataset/activity_labels.txt", col.names = c("activity","activitydesc"))
         
         ##Read features file to get measurement variable names
-        features <- read.table("C:/Users/corhol/Documents/data/UCI HAR Dataset/features.txt")
+        features <- read.table("./UCI HAR Dataset/features.txt")
         names(features) <- c("featureid","featuredesc")
         
         ##Add meaninful names to test and train data
@@ -64,5 +64,5 @@ run_analysis <- {
         
         ##Summarize by average mean and standard deviation
         finaldata <- summarize(combineddatagrouped, mean = mean(measure))
-        write.table(finaldata, file = "C:/Users/corhol/Documents/data/UCI HAR Dataset/tidydata.txt", row.name=FALSE)
+        write.table(finaldata, file = "./UCI HAR Dataset/tidydata.txt", row.name=FALSE)
 }
